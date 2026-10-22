@@ -1,0 +1,311 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Estilos da seção "Atualizações do mercado".
+//
+// Vêm aninhados sob `.site-institucional` porque é assim que o `site.scss` do
+// Hub.Siero funciona: o site institucional foi portado do protótipo com
+// seletores de elemento amplos, e todo o CSS vive sob esse wrapper para não
+// vazar para a aplicação em react-bootstrap. Mantido igual para o bloco ser
+// colável de volta sem ajuste.
+//
+// Fora daquele contexto, basta remover o wrapper e o nível de indentação.
+//
+// Tokens usados, todos já existentes no site:
+//   #0f1d4b  navy da marca          #00c4b4  teal do site institucional
+//   #0d1b2a  escuro do site         #00d9bd  teal do logo (só na textura)
+//   #0b4a6e  petróleo               #e6f8f6  fundo do chip
+//   #e5e7eb  borda                  #d9dee5  borda em hover
+//   #6b7280  texto de apoio         #93a0b8  meta
+// ─────────────────────────────────────────────────────────────────────────────
+
+.site-institucional {
+  // Fundo branco de propósito: fica entre as seções cinza (#f2f2f2) e o contato
+  // escuro (#0d1b2a), e é o respiro antes da virada de cor.
+  .blog-section {
+    padding: 80px 24px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    // O cabeçalho flutua sobre o conteúdo: sem esta folga, o salto pela âncora
+    // "#blog" deixa o título por baixo dele.
+    scroll-margin-top: 110px;
+  }
+
+  .blog-section-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 680px;
+  }
+
+  .blog-section-intro {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #6b7280;
+    text-align: center;
+  }
+
+  // Destaque alto à esquerda, três chamadas à direita.
+  .blog-showcase {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .blog-highlight,
+  .blog-post-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 24px;
+    position: relative;
+    cursor: pointer;
+    will-change: transform;
+    transition:
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+  }
+
+  .blog-highlight:hover,
+  .blog-post-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 16px 32px -12px rgba(13, 27, 42, 0.12),
+      0 2px 6px rgba(13, 27, 42, 0.04);
+    border-color: #d9dee5;
+  }
+
+  .blog-highlight {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  // A capa é o gradiente da marca com a textura de pontos do site, em vez de
+  // uma imagem: não há asset de artigo para a landing, e o bloco de cor
+  // sustenta o destaque sem pedir um.
+  .blog-highlight-cover {
+    position: relative;
+    // Cresce para ocupar a sobra: a coluna da direita é mais alta, e sem isto
+    // o destaque ficava com um vazio branco abaixo do resumo.
+    flex: 1;
+    min-height: 220px;
+    background-color: #0f1d4b;
+    background-image:
+      radial-gradient(circle, rgba(0, 217, 189, 0.22) 1.2px, transparent 1.2px),
+      linear-gradient(135deg, #0f1d4b 0%, #00c4b4 100%);
+    background-size:
+      22px 22px,
+      auto;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px 24px;
+  }
+
+  .blog-highlight-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+
+  .blog-highlight-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #0d1b2a;
+    letter-spacing: -0.3px;
+  }
+
+  .blog-highlight-excerpt {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #6b7280;
+  }
+
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .blog-post-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 22px 24px;
+    flex: 1;
+  }
+
+  // O número é a âncora editorial da coluna: ordena a leitura sem pedir imagem.
+  .blog-post-index {
+    font-size: 13px;
+    font-weight: 600;
+    color: #00c4b4;
+    letter-spacing: 1px;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .blog-post-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .blog-post-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: #0d1b2a;
+    letter-spacing: -0.2px;
+  }
+
+  .blog-post-excerpt {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #6b7280;
+  }
+
+  .blog-post-seta {
+    color: #d9dee5;
+    flex-shrink: 0;
+    align-self: center;
+    transition:
+      color 0.3s ease,
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .blog-post-card:hover .blog-post-seta {
+    color: #00c4b4;
+    transform: translate(2px, -2px);
+  }
+
+  .blog-chip {
+    align-self: flex-start;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #0b4a6e;
+    background: #e6f8f6;
+    border-radius: 999px;
+    padding: 5px 12px;
+  }
+
+  .blog-chip--sobre-cor {
+    color: #0d1b2a;
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .blog-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 6px;
+    font-size: 13px;
+    color: #93a0b8;
+  }
+
+  .blog-meta-sep {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #d9dee5;
+    flex-shrink: 0;
+  }
+
+  .blog-meta-leitura {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  // A fileira de três, abaixo do destaque.
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  // Variante vertical: o número vai para cima e a seta para o pé, porque numa
+  // coluna estreita a linha horizontal não cabe.
+  .blog-post-card--coluna {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 24px;
+
+    .blog-post-seta {
+      align-self: flex-end;
+      margin-top: auto;
+    }
+  }
+
+  .blog-actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .blog-link-secundario {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #0b4a6e;
+    text-decoration: none;
+    transition: color 0.25s ease;
+
+    &:hover {
+      color: #00c4b4;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .blog-showcase,
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .blog-highlight-cover {
+      min-height: 170px;
+    }
+
+    .blog-highlight-title {
+      font-size: 21px;
+    }
+  }
+
+  // Quem pediu menos movimento no sistema: o card não se desloca.
+  @media (prefers-reduced-motion: reduce) {
+    .blog-highlight,
+    .blog-post-card {
+      transform: none !important;
+    }
+
+    .blog-post-card:hover .blog-post-seta {
+      transform: none !important;
+    }
+  }
+}
