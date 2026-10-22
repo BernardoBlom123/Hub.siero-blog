@@ -46,17 +46,24 @@ src/pages/site/blogSection.scss             os estilos da seção
 src/pages/site/smoothScroll.ts              helper já existente no app, aqui
                                             só para a demonstração compilar
 
+demo/index.html                             entrada da demonstração
 demo/main.tsx                               a página de demonstração
 demo/demo.scss                              estilos de apoio, NÃO vão para o app
-docs/                                       a demonstração compilada (GitHub Pages)
+
+index.html + assets/                        a demonstração COMPILADA, na raiz
+.nojekyll                                   desliga o Jekyll do GitHub Pages
 ```
+
+O build sai na raiz porque o GitHub Pages deste repositório está ligado com
+origem `main` na raiz. Sem o `.nojekyll`, o Pages renderizaria o README como
+site em vez de servir a página.
 
 ## Rodar a demonstração
 
 ```bash
 npm install
 npm run dev      # desenvolvimento
-npm run build    # typecheck + build para docs/
+npm run build    # typecheck + build para a raiz (publica no Pages)
 npm run preview  # serve o build
 ```
 
