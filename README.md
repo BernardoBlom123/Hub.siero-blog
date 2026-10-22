@@ -4,6 +4,8 @@ A seção de conteúdo da landing do Hub.Siero, extraída como peça isolada.
 Entra no site institucional **logo abaixo do vídeo do Hero**, antes das seções
 de produto.
 
+**Demonstração ao vivo:** https://bernardoblom123.github.io/Hub.siero-blog/
+
 ![Preview da seção](preview.png)
 
 ## O que é
@@ -35,15 +37,38 @@ a ser `/blog/:slug`. Os campos usados aqui mapeiam assim:
 
 ## Arquivos
 
+Os caminhos em `src/` espelham os da aplicação, então os arquivos são coláveis
+de volta sem ajuste de import.
+
 ```
-src/BlogSection.tsx     o componente
-src/blogSection.scss    os estilos
+src/pages/site/components/BlogSection.tsx   o componente
+src/pages/site/blogSection.scss             os estilos da seção
+src/pages/site/smoothScroll.ts              helper já existente no app, aqui
+                                            só para a demonstração compilar
+
+demo/main.tsx                               a página de demonstração
+demo/demo.scss                              estilos de apoio, NÃO vão para o app
+docs/                                       a demonstração compilada (GitHub Pages)
 ```
+
+## Rodar a demonstração
+
+```bash
+npm install
+npm run dev      # desenvolvimento
+npm run build    # typecheck + build para docs/
+npm run preview  # serve o build
+```
+
+A página usa `MemoryRouter`: no GitHub Pages não existe rota `/blog` nem
+fallback de SPA, então o link secundário é inerte na demonstração em vez de
+levar a um 404.
 
 ## Como integrar
 
-1. Copie `src/BlogSection.tsx` para `src/pages/site/components/`.
-2. Cole o conteúdo de `src/blogSection.scss` no fim de `src/pages/site/site.scss`,
+1. Copie `src/pages/site/components/BlogSection.tsx` para o mesmo caminho na
+   aplicação. O `smoothScroll.ts` já existe lá; não copie o daqui.
+2. Cole o conteúdo de `src/pages/site/blogSection.scss` no fim de `src/pages/site/site.scss`,
    **dentro** do bloco `.site-institucional` (sem repetir o wrapper), e acrescente
    `.blog-highlight` e `.blog-post-card` à lista do `@media (prefers-reduced-motion)`
    que já existe lá.

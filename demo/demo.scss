@@ -1,0 +1,116 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Estilos DE APOIO, só para a página de demonstração.
+//
+// A seção usa três classes que pertencem ao `site.scss` da aplicação e não a
+// ela: `.section-label`, `.btn-primary` e `.btn-primary--static`. Fora do site,
+// nada as define, e a seção renderizaria sem título e sem botão. O que está
+// aqui é a cópia dessas regras, mais o reset e a tipografia de base do wrapper
+// `.site-institucional`.
+//
+// NADA DAQUI deve ir para a aplicação: lá, essas regras já existem.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@import "../src/pages/site/blogSection.scss";
+
+.site-institucional {
+  // Base do wrapper, re-homed do reset global do protótipo.
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+  background: #f9f9f9;
+  min-height: 100vh;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section-label {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 300;
+    color: #0d1b2a;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .btn-primary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: linear-gradient(270deg, #0f1d4b, #00d9bdb5, #0f1d4b);
+    background-size: 300% 300%;
+    animation: site-gradient-shift 4s ease infinite;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    animation-duration: 1.5s;
+  }
+
+  .btn-primary--static {
+    animation: none;
+    background: linear-gradient(270deg, #0f1d4b, #00d9bdb5);
+    background-size: 100% 100%;
+  }
+}
+
+@keyframes site-gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// ── A moldura da demonstração ───────────────────────────────────────────────
+// Deixa explícito que é uma vitrine, e não a landing.
+.demo-aviso {
+  font-family: "Raleway", sans-serif;
+  background: #0f1d4b;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13.5px;
+  line-height: 1.5;
+  padding: 14px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 18px;
+  text-align: center;
+}
+
+.demo-aviso strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.demo-aviso a {
+  color: #00d9bd;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.demo-aviso a:hover {
+  text-decoration: underline;
+}
+
+.demo-ponto {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
